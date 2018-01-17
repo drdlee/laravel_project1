@@ -13,7 +13,13 @@
 
 Route::get('/', function () {
     // return view('welcome', [ 'name' => 'World' ]);   // cara pertama u/ passing value ke views
-    return view('welcome')->with('name', 'Woody');      // cara ke dua passing data ke views
+    // return view('welcome')->with('name', 'Woody');      // cara ke dua passing data ke views
+    $tasks = [
+      'Go to the store',
+      'Makan ikan',
+      'Baja jalan xiao hei'
+    ];
+    return view('welcome', compact('tasks'));
 });
 
 Route::get('/about', function(){
