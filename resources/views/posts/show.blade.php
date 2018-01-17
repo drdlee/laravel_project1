@@ -22,11 +22,12 @@
         <form action="/posts/{{$post->id}}/comments" method="POST">
           {{ csrf_field() }}
           <div class="form-group">
-            <textarea class="form-control" name="body" placeholder="your comment here"></textarea>
+            <textarea class="form-control" name="body" placeholder="your comment here" required></textarea>
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-primary">Add Comment</button>
           </div>
+          @include('include.errors')
         </form>
 
   </div>
