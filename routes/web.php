@@ -11,15 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome', [ 'name' => 'World' ]);   // cara pertama u/ passing value ke views
-    // return view('welcome')->with('name', 'Woody');      // cara ke dua passing data ke views
-    $tasks = [
-      'Go to the store',
-      'Makan ikan',
-      'Baja jalan xiao hei'
-    ];
-    return view('welcome', compact('tasks'));
+Route::get('/tasks', function () {
+    $tasks = DB::table('tasks')->latest()->get();
+    return view('tasks/index', compact('tasks'));
+});
+
+Route::get('tasks/{id}', function($id){
+  $tasks = DB::table('tasks')->find($id);
+  return view('tasks.show', compact('tasks'));   // task.show juga bisa di tulis task/show
 });
 
 Route::get('/about', function(){
