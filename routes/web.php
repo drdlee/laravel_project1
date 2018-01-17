@@ -20,13 +20,15 @@ Route::get('/about', function(){
   return view('about');
 });
 
-Route::get('/posts', 'PostController@index');
+Route::get('/posts', 'PostController@index')->name('home');
 Route::get('/posts/create', 'PostController@create');
 Route::post('/posts', 'PostController@store');
 Route::get('/posts/{post}', 'PostController@show');
 
 Route::post('posts/{post}/comments', 'CommentsController@store');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/register', 'RegistrationController@create');
+Route::post('/register', 'RegistrationController@store');
+Route::get('/login', 'SessionsController@create')->name('login');
+Route::post('/login', 'SessionsController@store');
+Route::get('/logout', 'SessionsController@destroy');
