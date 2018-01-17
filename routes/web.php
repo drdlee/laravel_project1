@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome', [ 'name' => 'World' ]);   // cara pertama u/ passing value ke views
+    return view('welcome')->with('name', 'Woody');      // cara ke dua passing data ke views
 });
 
 Route::get('/about', function(){
