@@ -1,7 +1,6 @@
 @extends('include.layout')
 
 @section('content')
-  <div class="col-sm-8 blog-main">
     <h1>Create Post</h1>
     <form method="POST" action="/posts">
       {{ csrf_field() }}
@@ -20,5 +19,4 @@
       @include('include.errors')
 
     </form>
-  </div>
 @endsection

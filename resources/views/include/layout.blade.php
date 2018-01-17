@@ -15,7 +15,9 @@
     <div class="container">
       @include('include.header')
       <div class="row">
+        <div class="col-sm-8 blog-main">
         @yield('content')
+      </div>
         @include('include.sidebar')
       </div><!-- /.row -->
     </div>
