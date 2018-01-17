@@ -19,3 +19,5 @@ Route::get('tasks/{id}', 'TasksController@show');
 Route::get('/about', function(){
   return view('about');
 });
+
+Route::get('/posts', 'PostController@index');
