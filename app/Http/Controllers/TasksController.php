@@ -12,8 +12,7 @@ class TasksController extends Controller
     return view('tasks.index', compact('tasks'));
   }
 
-  public function show($id){
-    $tasks = Task::find($id);
-    return view('tasks.show', compact('tasks'));
-  }
+  public function show(Task $id){  // ini cara singkat untuk cari data yang telah di kasih dari Route, dan sangat sensitive
+    return view('tasks.show', compact('tasks'));  //  maksudnya sensitive, kalo di Route pakai {id}, sini juga harus pakai $id
+  }                                               //  tapi sekarang tanpa konfigurasi apapun dia hanya akan mencari 'primary-key' dari Task
 }
