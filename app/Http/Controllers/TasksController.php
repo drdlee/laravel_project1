@@ -13,6 +13,6 @@ class TasksController extends Controller
   }
 
   public function show(Task $id){  // ini cara singkat untuk cari data yang telah di kasih dari Route, dan sangat sensitive
-    return view('tasks.show', compact('tasks'));  //  maksudnya sensitive, kalo di Route pakai {id}, sini juga harus pakai $id
+    return view('tasks.show', compact('id'));  //  maksudnya sensitive, kalo di Route pakai {id}, sini juga harus pakai $id
   }                                               //  tapi sekarang tanpa konfigurasi apapun dia hanya akan mencari 'primary-key' dari Task
 }

@@ -5,6 +5,6 @@
     <title></title>
   </head>
   <body>
-    {{ $tasks->body }}
+    {{ $id->body }}
   </body>
 </html>
