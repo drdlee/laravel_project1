@@ -13,7 +13,12 @@
         <label for="body">Body</label>
         <textarea name="body" class="form-control" placeholder="Body"></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+
+      @include('include.errors')
+
     </form>
   </div>
 @endsection
