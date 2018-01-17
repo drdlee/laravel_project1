@@ -10,10 +10,10 @@ class Post extends Model
     public function comments(){
       return $this->hasMany(Comment::class);
     }
-    public function addComment($body){
-      Comment::create([
-        'body' => $body,
-        'post_id' => $this->id
-      ]);
+    public function  addComment($body){
+      $this->comments()->create(compact('body'));
+      // penjelasan ---
+      // $this->comments()  ini adalah function yang di declare di atas, pas kita bikin relation ke Comments
+      // jadi kita bilang tolong create data dari body, kedalam Comment kolom body
     }
 }

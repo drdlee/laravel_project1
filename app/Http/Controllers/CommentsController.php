@@ -10,7 +10,9 @@ class CommentsController extends Controller
 {
     public function store(Post $post){
       $post->addComment(request('body'));
-
+      // kenapa langsung udah $post, karena di atas argument sudah ada shortcutnya (Post $post)
+      // (Post $post) artinya $post = Post::find($post),
+      // jadi $post ini artinya adalah postingan yang sekarang dipilih.
       return back();
     }
 }
