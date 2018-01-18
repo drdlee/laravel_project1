@@ -16,4 +16,7 @@ class Post extends Model
       // $this->comments()  ini adalah function yang di declare di atas, pas kita bikin relation ke Comments
       // jadi kita bilang tolong create data dari body, kedalam Comment kolom body
     }
+    public function user(){
+      return $this->belongsTo(User::class);
+    }
 }
