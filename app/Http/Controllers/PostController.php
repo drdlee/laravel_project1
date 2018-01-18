@@ -12,8 +12,11 @@ class PostController extends Controller
       $this->middleware('auth')->except(['index', 'show']);
     }
     public function index(){
-      $posts = Post::latest()->filter(request(['month','year']))->get();
-          // filter ini adalah scope method yang kita buat sendiri di class Post.php
+      $posts = Post::latest();
+      if(request(['month', 'year'])){
+        $posts->filter(request(['month', 'year']));
+      }
+      $posts = $posts->get();
 
       $archives = Post::selectRaw(
         'year(created_at) year,
