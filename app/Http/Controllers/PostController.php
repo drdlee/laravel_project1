@@ -12,17 +12,10 @@ class PostController extends Controller
       $this->middleware('auth')->except(['index', 'show']);
     }
     public function index(){
-      $posts = Post::latest();
+      $posts = Post::latest()->filter(request(['month','year']))->get();
+          // filter ini adalah scope method yang kita buat sendiri di class Post.php
 
-      if($month = request('month')){
-        $posts->whereMonth('created_at', Carbon::parse($month)->month);    //  month yang kita dapat dari request kan 'may'
-      }                                                                    //  kita perlu cari cara bikin 'may' jadi '5', makanya pakai Carbon
-      if($year = request('year')){
-        $posts->whereYear('created_at', $year);
-      }
-      $posts = $posts->get();
-
-      $archives = Post::selectraw(
+      $archives = Post::selectRaw(
         'year(created_at) year,
         monthname(created_at) month,
         count(*) published'

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Post extends Model
 {
@@ -18,5 +19,13 @@ class Post extends Model
     }
     public function user(){
       return $this->belongsTo(User::class);
+    }
+    public function scopeFilter($query, $filters){
+      if($month = $filters['month']){
+        $query->whereMonth('created_at', Carbon::parse($month)->month);    //  month yang kita dapat dari request kan 'may'
+      }                                                                    //  kita perlu cari cara bikin 'may' jadi '5', makanya pakai Carbon
+      if($year = $filters['year']){
+        $query->whereYear('created_at', $year);
+      }
     }
 }
